@@ -1,19 +1,58 @@
 import { NextResponse } from "next/server";
 import { getSB } from "../../../lib/sb";
 
-export async function POST(req: Request){
+export async function POST(req: Request) {
   const sb = getSB();
-  const body = await req.json().catch(()=>({} as any));
-  const { type, label, path, referrer, utm_source, utm_medium, utm_campaign } = body || {};
-  if(!type) return NextResponse.json({ ok:false, error:"missing type" }, { status:400 });
-  if(!sb) return NextResponse.json({ ok:true, stored:false, reason:"no-supabase" });
+  if (!sb) {
+    return NextResponse.json(
+      { ok: false, error: "no-supabase" },
+      { status: 500 }
+    );
+  }
 
-  const ip = (req.headers.get("x-forwarded-for") || "").split(",")[0] || "";
-  const user_agent = req.headers.get("user-agent") || "";
+  let body: any;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: "invalid-json" },
+      { status: 400 }
+    );
+  }
+
+  const {
+    type,
+    label,
+    path,
+    referrer,
+    utm_source,
+    utm_medium,
+    utm_campaign,
+  } = body || {};
+
+  if (!type) {
+    return NextResponse.json(
+      { ok: false, error: "missing-type" },
+      { status: 400 }
+    );
+  }
 
   const { error } = await sb.from("events").insert({
-    type, label, path, referrer, utm_source, utm_medium, utm_campaign, ip, user_agent
+    type,
+    label,
+    path,
+    referrer,
+    utm_source,
+    utm_medium,
+    utm_campaign,
   });
-  if(error) return NextResponse.json({ ok:true, stored:false, error:error.message });
-  return NextResponse.json({ ok:true, stored:true });
+
+  if (error) {
+    return NextResponse.json(
+      { ok: false, error: error.message },
+      { status: 500 }
+    );
+  }
+
+  return NextResponse.json({ ok: true });
 }
