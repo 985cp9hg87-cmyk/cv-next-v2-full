@@ -20,6 +20,8 @@ export async function POST(req: Request) {
     );
   }
 
+  // (removed debug logging)
+
   const {
     type,
     label,
@@ -37,6 +39,7 @@ export async function POST(req: Request) {
     );
   }
 
+  // Inserta en public.events con las columnas esperadas
   const { error } = await sb.from("events").insert({
     type,
     label,
