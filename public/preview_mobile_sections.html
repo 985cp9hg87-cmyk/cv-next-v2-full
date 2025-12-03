@@ -457,10 +457,10 @@
       .avatar {
         width: 160px;
         height: 160px;
-        border-radius: 50%;
-        /* Circular for symmetry */
+        border-radius: 14px;
+        /* Match desktop radius */
         margin: 0 auto;
-        border: 2px solid var(--stroke);
+        border: 1px solid var(--stroke);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
       }
 
@@ -476,31 +476,36 @@
 
       .title h1 {
         font-size: 33px;
-        /* Increased by 3px as requested */
+        /* Approved size */
         line-height: 1.1;
         margin: 0 0 6px;
         white-space: nowrap;
-        /* Force single line */
       }
 
       .title h1 span {
         display: inline;
-        /* Remove line break */
       }
 
       .subtitle {
         font-size: 22px;
-        /* Matched to title size */
+        /* Approved size */
+        margin-top: 6px;
+        display: block;
         color: #E1C16E;
         font-weight: 700;
         letter-spacing: 1px;
         text-transform: uppercase;
-        display: block;
       }
 
       .wrap {
         padding-left: 16px;
         padding-right: 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+        /* Reduced from 28px for mobile */
+        margin-bottom: 16px;
       }
     }
 
