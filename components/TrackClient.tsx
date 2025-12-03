@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 function getUTMs(search: URLSearchParams) {
   return {
@@ -21,30 +21,29 @@ async function send(type: string, label?: string) {
       body: JSON.stringify({ type, label, path, referrer, ...utms }),
       keepalive: true,
     });
-  } catch {}
+  } catch { }
 }
 
-export default function TrackClient(){
+export default function TrackClient() {
   const pathname = usePathname();
-  const search = useSearchParams();
 
   // pageview on route change
-  useEffect(()=>{ send("pageview"); }, [pathname, search]);
+  useEffect(() => { send("pageview"); }, [pathname]);
 
   // click tracking: elements with data-cta
-  useEffect(()=>{
+  useEffect(() => {
     const handler = (e: Event) => {
       const el = (e.target as HTMLElement)?.closest("a,button") as HTMLElement | null;
-      if(!el) return;
+      if (!el) return;
       const explicit = el.getAttribute("data-cta");
       let label = explicit || "";
-      if(!label && el instanceof HTMLAnchorElement) {
+      if (!label && el instanceof HTMLAnchorElement) {
         const href = el.getAttribute("href") || "";
-        if(href.startsWith("mailto:")) label = "email";
-        else if(href.includes("wa.me")) label = "wsp";
-        else if(href.includes("#agenda")) label = "agenda";
+        if (href.startsWith("mailto:")) label = "email";
+        else if (href.includes("wa.me")) label = "wsp";
+        else if (href.includes("#agenda")) label = "agenda";
       }
-      if(label) send("cta_click", label);
+      if (label) send("cta_click", label);
     };
     document.addEventListener("click", handler);
     return () => document.removeEventListener("click", handler);
