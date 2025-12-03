@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Hero Options</title>
+    <style>
+        :root {
+            --bg: #0b1321;
+            --panel: #0f172a;
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --brand1: #0ea5e9;
+            --brand2: #22d3ee;
+            --stroke: rgba(14, 165, 233, .35);
+            --shadow: 0 22px 60px rgba(0, 0, 0, .45);
+        }
+
+        body {
+            background: #050910;
+            color: var(--text);
+            font-family: -apple-system, system-ui, sans-serif;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .mobile-frame {
+            width: 375px;
+            height: 600px;
+            background: var(--bg);
+            border: 8px solid #1e293b;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .status-bar {
+            height: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .label {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: var(--brand2);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        /* Common Elements */
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        h1 {
+            margin: 0;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            color: #E1C16E;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* --- OPTION 1: Classic Stacked (Current) --- */
+        .opt-1 {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .opt-1 .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow);
+        }
+
+        .opt-1 h1 {
+            font-size: 28px;
+        }
+
+        .opt-1 .subtitle {
+            font-size: 18px;
+            margin-top: 8px;
+        }
+
+        /* --- OPTION 2: Left Aligned --- */
+        .opt-2 {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            gap: 16px;
+        }
+
+        .opt-2 .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--stroke);
+        }
+
+        .opt-2 h1 {
+            font-size: 32px;
+        }
+
+        .opt-2 .subtitle {
+            font-size: 18px;
+            margin-top: 4px;
+            border-left: 3px solid var(--brand2);
+            padding-left: 10px;
+        }
+
+        /* --- OPTION 3: Compact Row --- */
+        .opt-3 {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 15px;
+            align-items: center;
+            border-bottom: 1px solid var(--stroke);
+        }
+
+        .opt-3 .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--brand2);
+        }
+
+        .opt-3 h1 {
+            font-size: 22px;
+        }
+
+        .opt-3 .subtitle {
+            font-size: 14px;
+            margin-top: 4px;
+            opacity: 0.9;
+        }
+
+        /* --- OPTION 4: Hero Card / Overlay --- */
+        .opt-4 {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .opt-4 .bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            opacity: 0.6;
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+
+        .opt-4 .content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+        }
+
+        .opt-4 h1 {
+            font-size: 36px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .opt-4 .subtitle {
+            font-size: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* --- OPTION 5: Modern Minimal --- */
+        .opt-5 {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .opt-5 .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            transform: rotate(-3deg);
+            border: 1px solid var(--stroke);
+        }
+
+        .opt-5 h1 {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .opt-5 h1 strong {
+            font-weight: 800;
+            display: block;
+            font-size: 32px;
+            color: var(--brand2);
+        }
+
+        .opt-5 .subtitle {
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--muted);
+        }
+
+        /* --- OPTION 6: Asymmetric / Creative --- */
+        .opt-6 {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 110px;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .opt-6 .avatar {
+            width: 110px;
+            height: 140px;
+            border-radius: 10px 10px 50px 10px;
+            overflow: hidden;
+            border: 1px solid var(--stroke);
+        }
+
+        .opt-6 h1 {
+            font-size: 30px;
+            text-align: right;
+            line-height: 1;
+        }
+
+        .opt-6 .subtitle {
+            font-size: 16px;
+            text-align: right;
+            margin-top: 10px;
+            display: inline-block;
+            background: rgba(14, 165, 233, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Option 1 -->
+    <div class="mobile-frame">
+        <div class="label">1. Clásico Centrado (Actual)</div>
+        <div class="status-bar"></div>
+        <div class="opt-1">
+            <div class="avatar"><img src="images/profile-v3-centered.png" class="avatar-img"></div>
+            <div class="title">
+                <h1>José Luis<br><span>Acevedo Ayala</span></h1>
+                <div class="subtitle">Ingeniero Comercial</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 2 -->
+    <div class="mobile-frame">
+        <div class="label">2. Alineado Izquierda</div>
+        <div class="status-bar"></div>
+        <div class="opt-2">
+            <div class="avatar"><img src="images/profile-v3-centered.png" class="avatar-img"></div>
+            <div class="title">
+                <h1>José Luis<br><span>Acevedo Ayala</span></h1>
+                <div class="subtitle">Ingeniero Comercial</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 3 -->
+    <div class="mobile-frame">
+        <div class="label">3. Fila Compacta</div>
+        <div class="status-bar"></div>
+        <div class="opt-3">
+            <div class="avatar"><img src="images/profile-v3-centered.png" class="avatar-img"></div>
+            <div class="title">
+                <h1>José Luis Acevedo</h1>
+                <div class="subtitle">Ingeniero Comercial</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 4 -->
+    <div class="mobile-frame">
+        <div class="label">4. Hero Overlay</div>
+        <div class="status-bar"></div>
+        <div class="opt-4">
+            <img src="images/profile-v3-centered.png" class="bg-img">
+            <div class="content">
+                <h1>José Luis Acevedo</h1>
+                <div class="subtitle">Ingeniero Comercial</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 5 -->
+    <div class="mobile-frame">
+        <div class="label">5. Moderno Minimal</div>
+        <div class="status-bar"></div>
+        <div class="opt-5">
+            <div class="avatar"><img src="images/profile-v3-centered.png" class="avatar-img"></div>
+            <div class="title">
+                <h1>José Luis <strong>Acevedo</strong></h1>
+                <div class="subtitle">INGENIERO COMERCIAL</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 6 -->
+    <div class="mobile-frame">
+        <div class="label">6. Asimétrico</div>
+        <div class="status-bar"></div>
+        <div class="opt-6">
+            <div class="title">
+                <h1>José Luis<br><span>Acevedo</span></h1>
+                <div class="subtitle">Ingeniero Comercial</div>
+            </div>
+            <div class="avatar"><img src="images/profile-v3-centered.png" class="avatar-img"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

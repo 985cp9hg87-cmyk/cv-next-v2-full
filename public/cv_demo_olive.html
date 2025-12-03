@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Luis Acevedo Ayala - CV Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Palette */
+            --primary: #55753e;
+            /* Deep Olive Green - Darker for premium feel */
+            --secondary: #A7C5E3;
+            /* Light Blue */
+            --bg-color: #F2F0E9;
+            /* Lighter Beige/Cream for cleaner look */
+            --accent: #B8225B;
+            /* Deep Fuchsia - Slightly darker/richer */
+            --text-main: #2c3e50;
+            /* Deep Blue Grey */
+            --text-muted: #64748b;
+            /* Slate Grey */
+            --white: #ffffff;
+
+            /* Spacing */
+            --container-width: 1000px;
+            --section-spacing: 80px;
+            /* Increased spacing */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 10% 10%, rgba(167, 197, 227, 0.15) 0%, transparent 40%);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(45deg, var(--primary), #3a5228);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            color: #1a202c;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+            margin-top: 12px;
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            margin-bottom: 6px;
+            color: #1a202c;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER / HERO */
+        header {
+            padding: 100px 0 80px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .profession {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 30px;
+            display: block;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(167, 197, 227, 0.3);
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            background: #fff;
+            border-color: var(--secondary);
+        }
+
+        .profile-img-container {
+            width: 320px;
+            height: 380px;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%;
+            /* Adjusted to show face properly */
+            border-radius: 24px;
+            box-shadow:
+                0 20px 40px -10px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            /* Soft premium shadow */
+        }
+
+        /* Decorative element behind image */
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            bottom: -20px;
+            left: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 32px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* SECTIONS */
+        section {
+            margin-bottom: var(--section-spacing);
+        }
+
+        /* ABOUT */
+        .about-box {
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px -20px rgba(107, 142, 78, 0.15);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* EXPERIENCE */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15px;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--primary), rgba(107, 142, 78, 0.1));
+        }
+
+        .job-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .job-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 9px;
+            height: 9px;
+            background-color: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(107, 142, 78, 0.1);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+
+        .company {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .job-desc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .job-desc li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .job-desc li::before {
+            content: '—';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* EDUCATION */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .edu-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* SKILLS */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background-color: var(--white);
+            color: var(--text-main);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .skill-tag.soft {
+            background-color: rgba(167, 197, 227, 0.15);
+            color: #2c3e50;
+            border-color: transparent;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #9e1b4d);
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 30px;
+            box-shadow: 0 10px 20px -5px rgba(184, 34, 91, 0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(184, 34, 91, 0.5);
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+                padding-top: 60px;
+            }
+
+            .header-content {
+                order: 2;
+            }
+
+            .profile-img-container {
+                order: 1;
+                margin: 0 auto;
+                width: 260px;
+                height: 320px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="header-content">
+                <h1>José Luis Acevedo Ayala</h1>
+                <span class="profession">Ingeniero Comercial · Gestión & Operaciones</span>
+
+                <div class="contact-info">
+                    <div class="contact-item">a.joseluis.w@gmail.com</div>
+                    <div class="contact-item">+56 9 22008319</div>
+                    <div class="contact-item">Santiago, Chile</div>
+                </div>
+
+                <a href="#" class="cta-btn">Descargar CV</a>
+            </div>
+            <div class="profile-img-container">
+                <img src="assets/profile_olive.jpg" alt="José Luis Acevedo" class="profile-img">
+            </div>
+        </header>
+
+        <!-- ABOUT -->
+        <section>
+            <h2>Sobre Mí</h2>
+            <div class="about-box">
+                <p>Soy Ingeniero Comercial con formación de postgrado en gestión de negocios. He tenido responsabilidad
+                    directa sobre administración, finanzas y operaciones en empresas de servicios y retail.</p>
+                <p>Mi especialidad es reemplazar el caos operativo por sistemas simples y medibles. Logro que la
+                    información clave (ventas, pagos, reclamos) se registre una sola vez y genere métricas en línea para
+                    decidir con datos.</p>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section>
+            <h2>Experiencia Profesional</h2>
+            <div class="timeline">
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <h3>Jefatura de Administración</h3>
+                            <span class="company">Procomercial.com</span>
+                        </div>
+                        <span class="date">2 años</span>
+                    </div>
+                    <div class="job-desc">
+                        <ul>
+                            <li>Ordené el ciclo administrativo-financiero, asegurando liquidez y cumplimiento normativo.
+                            </li>
+                            <li>Implementé flujos de caja mensuales con proyección de ingresos y egresos.</li>
+                            <li>Ejecuté conciliaciones bancarias y contables, eliminando partidas pendientes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <h3>Ejecutivo de Cuenta</h3>
+                            <span class="company">ECR Group Complementos Recourse</span>
+                        </div>
+                        <span class="date">6 años</span>
+                    </div>
+                    <div class="job-desc">
+                        <ul>
+                            <li>Gestioné una cartera de clientes corporativos, asegurando la continuidad operacional.
+                            </li>
+                            <li>Supervisé equipos de terreno, optimizando rutas y tiempos de respuesta.</li>
+                            <li>Resolví incidencias críticas de servicio, manteniendo la satisfacción del cliente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section>
+            <h2>Educación</h2>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <h3>Diplomado en Marketing Digital</h3>
+                    <p class="company">Pontificia Universidad Católica de Chile</p>
+                    <span class="date">2022</span>
+                </div>
+                <div class="edu-card">
+                    <h3>Magíster en Administración de Empresas</h3>
+                    <p class="company">Universidad Gabriela Mistral</p>
+                    <span class="date">2012</span>
+                </div>
+                <div class="edu-card">
+                    <h3>Ingeniería Comercial</h3>
+                    <p class="company">Universidad Gabriela Mistral</p>
+                    <span class="date">2005</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section>
+            <h2>Habilidades</h2>
+            <div class="skills-container">
+                <div class="skill-tag">Planificación Estratégica</div>
+                <div class="skill-tag">Gestión Financiera</div>
+                <div class="skill-tag">Diseño de Procesos</div>
+                <div class="skill-tag">Métricas & KPIs</div>
+                <div class="skill-tag soft">Liderazgo de Equipos</div>
+                <div class="skill-tag soft">Resolución de Problemas</div>
+                <div class="skill-tag soft">Comunicación Efectiva</div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2025 José Luis Acevedo Ayala. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

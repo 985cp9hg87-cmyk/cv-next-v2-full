@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Alternatives</title>
+    <style>
+        :root {
+            --bg: #0b1321;
+            --panel: #0f172a;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --brand1: #0ea5e9;
+            --brand2: #22d3ee;
+            --stroke: rgba(14, 165, 233, .35);
+            --radius: 14px;
+        }
+
+        body {
+            background: #0b1321;
+            color: var(--text);
+            font-family: system-ui, sans-serif;
+            padding: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--brand2);
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font: 800 24px/1.2 ui-serif, Georgia, serif;
+            margin-bottom: 20px;
+            background: linear-gradient(270deg, rgba(14, 165, 233, 0), rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0));
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .container {
+            margin-bottom: 60px;
+            border: 1px dashed var(--stroke);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .label {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 15px;
+            display: block;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* --- OPTION 1: Big Stats Grid --- */
+        .opt-1-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--stroke);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            background: rgba(14, 165, 233, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #fff, var(--brand2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        /* --- OPTION 2: Impact Bars --- */
+        .opt-2-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .impact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .impact-info {
+            width: 150px;
+            flex-shrink: 0;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .bar-container {
+            flex-grow: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--brand1), var(--brand2));
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .bar-fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 10px;
+            background: #fff;
+            opacity: 0.5;
+            filter: blur(4px);
+        }
+
+        .impact-metric {
+            width: 60px;
+            text-align: right;
+            font-weight: 800;
+            color: var(--brand2);
+        }
+
+        /* --- OPTION 3: Bento Box --- */
+        .opt-3-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 100px);
+            gap: 12px;
+        }
+
+        .bento-item {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--stroke);
+            border-radius: 14px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-item.large {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), transparent);
+        }
+
+        .bento-num {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--brand2);
+        }
+
+        .bento-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .bento-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.2;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* --- OPTION 4: Metric Tags (Sensational) --- */
+        .opt-4-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .metric-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--stroke);
+            border-radius: 50px;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .metric-tag:hover {
+            border-color: var(--brand2);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+        }
+
+        .tag-val {
+            font-weight: 900;
+            color: var(--brand2);
+            font-size: 16px;
+        }
+
+        .tag-name {
+            font-size: 14px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Alternativas de Habilidades (con Métricas)</h2>
+
+    <!-- Option 1 -->
+    <div class="container">
+        <span class="label">Opción 1: Big Stats Grid (Impacto Visual)</span>
+        <div class="opt-1-grid">
+            <div class="stat-card">
+                <span class="stat-number">12+</span>
+                <span class="stat-label">Años Liderando</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Equipos Gestionados</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Cumplimiento KPIs</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">30%</span>
+                <span class="stat-label">Ahorro Costos</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 2 -->
+    <div class="container">
+        <span class="label">Opción 2: Barras de Impacto (Progreso)</span>
+        <div class="opt-2-list">
+            <div class="impact-item">
+                <div class="impact-info">Planificación</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 95%"></div>
+                </div>
+                <div class="impact-metric">95%</div>
+            </div>
+            <div class="impact-item">
+                <div class="impact-info">Gestión Equipos</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 90%"></div>
+                </div>
+                <div class="impact-metric">90%</div>
+            </div>
+            <div class="impact-item">
+                <div class="impact-info">Finanzas</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 85%"></div>
+                </div>
+                <div class="impact-metric">85%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 3 -->
+    <div class="container">
+        <span class="label">Opción 3: Bento Grid (Moderno & Estructurado)</span>
+        <div class="opt-3-grid">
+            <div class="bento-item large">
+                <div class="bento-num">15 Años</div>
+                <div class="bento-label">Experiencia Gerencial</div>
+                <svg class="bento-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                </svg>
+            </div>
+            <div class="bento-item">
+                <div class="bento-num">80+</div>
+                <div class="bento-label">Proyectos</div>
+            </div>
+            <div class="bento-item">
+                <div class="bento-num">24/7</div>
+                <div class="bento-label">Disponibilidad</div>
+            </div>
+            <div class="bento-item">
+                <div class="bento-num">Top 5%</div>
+                <div class="bento-label">Rendimiento</div>
+            </div>
+            <div class="bento-item large">
+                <div class="bento-num">$2M+</div>
+                <div class="bento-label">Presupuesto Gestionado</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 4 -->
+    <div class="container">
+        <span class="label">Opción 4: Metric Tags (Dinámico)</span>
+        <div class="opt-4-flex">
+            <div class="metric-tag">
+                <span class="tag-val">12 Años</span>
+                <span class="tag-name">Estrategia</span>
+            </div>
+            <div class="metric-tag">
+                <span class="tag-val">50+ Personas</span>
+                <span class="tag-name">Liderazgo</span>
+            </div>
+            <div class="metric-tag">
+                <span class="tag-val">100%</span>
+                <span class="tag-name">Resolución</span>
+            </div>
+            <div class="metric-tag">
+                <span class="tag-val">x3</span>
+                <span class="tag-name">Eficiencia</span>
+            </div>
+            <div class="metric-tag">
+                <span class="tag-val">Expert</span>
+                <span class="tag-name">Negociación</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 5: Circular Stats -->
+    <div class="container">
+        <span class="label">Opción 5: Anillos de Progreso (Dashboard)</span>
+        <style>
+            .opt-5-grid {
+                display: flex;
+                gap: 30px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .circle-stat {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                display: grid;
+                place-items: center;
+            }
+
+            .circle-bg {
+                fill: none;
+                stroke: rgba(255, 255, 255, 0.1);
+                stroke-width: 8;
+            }
+
+            .circle-progress {
+                fill: none;
+                stroke: var(--brand2);
+                stroke-width: 8;
+                stroke-linecap: round;
+                transform: rotate(-90deg);
+                transform-origin: 50% 50%;
+                stroke-dasharray: 251;
+                stroke-dashoffset: 25;
+                /* 90% */
+            }
+
+            .circle-text {
+                position: absolute;
+                text-align: center;
+            }
+
+            .circle-val {
+                font-weight: 800;
+                font-size: 20px;
+                color: var(--text);
+                display: block;
+            }
+
+            .circle-label {
+                font-size: 11px;
+                color: var(--muted);
+                text-transform: uppercase;
+                margin-top: 2px;
+                display: block;
+            }
+        </style>
+        <div class="opt-5-grid">
+            <div class="circle-stat">
+                <svg width="100" height="100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40" />
+                    <circle class="circle-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 25" />
+                </svg>
+                <div class="circle-text"><span class="circle-val">90%</span><span class="circle-label">Liderazgo</span>
+                </div>
+            </div>
+            <div class="circle-stat">
+                <svg width="100" height="100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40" />
+                    <circle class="circle-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 50" />
+                </svg>
+                <div class="circle-text"><span class="circle-val">80%</span><span class="circle-label">Finanzas</span>
+                </div>
+            </div>
+            <div class="circle-stat">
+                <svg width="100" height="100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40" />
+                    <circle class="circle-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 10" />
+                </svg>
+                <div class="circle-text"><span class="circle-val">95%</span><span class="circle-label">Estrategia</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 6: Equalizer / Vertical Bars -->
+    <div class="container">
+        <span class="label">Opción 6: Ecualizador (Visual)</span>
+        <style>
+            .opt-6-flex {
+                display: flex;
+                gap: 20px;
+                align-items: flex-end;
+                height: 150px;
+                justify-content: center;
+                padding-bottom: 30px;
+            }
+
+            .eq-col {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                width: 60px;
+            }
+
+            .eq-bar {
+                width: 100%;
+                background: linear-gradient(0deg, var(--brand1), var(--brand2));
+                border-radius: 8px 8px 0 0;
+                position: relative;
+                transition: height 0.5s;
+                opacity: 0.8;
+            }
+
+            .eq-bar:hover {
+                opacity: 1;
+            }
+
+            .eq-val {
+                position: absolute;
+                top: -25px;
+                width: 100%;
+                text-align: center;
+                font-weight: 700;
+                font-size: 14px;
+                color: var(--brand2);
+            }
+
+            .eq-label {
+                font-size: 12px;
+                color: var(--muted);
+                text-align: center;
+                height: 30px;
+                display: flex;
+                align-items: center;
+            }
+        </style>
+        <div class="opt-6-flex">
+            <div class="eq-col">
+                <div class="eq-bar" style="height: 100px"><span class="eq-val">Top</span></div>
+                <span class="eq-label">Gestión</span>
+            </div>
+            <div class="eq-col">
+                <div class="eq-bar" style="height: 120px"><span class="eq-val">12a</span></div>
+                <span class="eq-label">Liderazgo</span>
+            </div>
+            <div class="eq-col">
+                <div class="eq-bar" style="height: 80px"><span class="eq-val">High</span></div>
+                <span class="eq-label">Ventas</span>
+            </div>
+            <div class="eq-col">
+                <div class="eq-bar" style="height: 110px"><span class="eq-val">100%</span></div>
+                <span class="eq-label">KPIs</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 7: Glass Cards (Premium) -->
+    <div class="container">
+        <span class="label">Opción 7: Glass Cards (Premium & Clean)</span>
+        <style>
+            .opt-7-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .glass-card {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 16px;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .glass-icon {
+                width: 40px;
+                height: 40px;
+                background: rgba(14, 165, 233, 0.2);
+                border-radius: 10px;
+                display: grid;
+                place-items: center;
+                color: var(--brand2);
+            }
+
+            .glass-content h4 {
+                margin: 0;
+                font-size: 24px;
+                font-weight: 800;
+                color: #fff;
+            }
+
+            .glass-content p {
+                margin: 0;
+                font-size: 13px;
+                color: var(--muted);
+            }
+        </style>
+        <div class="opt-7-grid">
+            <div class="glass-card">
+                <div class="glass-icon">★</div>
+                <div class="glass-content">
+                    <h4>12+</h4>
+                    <p>Años de Liderazgo</p>
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="glass-icon">👥</div>
+                <div class="glass-content">
+                    <h4>50+</h4>
+                    <p>Personas a cargo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 8: Tech Data Grid -->
+    <div class="container">
+        <span class="label">Opción 8: Tech Data (Analítico)</span>
+        <style>
+            .opt-8-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1px;
+                background: var(--stroke);
+                border: 1px solid var(--stroke);
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .tech-cell {
+                background: rgba(11, 19, 33, 0.9);
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .tech-label {
+                font-family: monospace;
+                font-size: 12px;
+                color: var(--brand1);
+                text-transform: uppercase;
+            }
+
+            .tech-val {
+                font-family: monospace;
+                font-size: 24px;
+                color: #fff;
+                font-weight: 700;
+            }
+        </style>
+        <div class="opt-8-grid">
+            <div class="tech-cell">
+                <span class="tech-label">EXP_LEVEL</span>
+                <span class="tech-val">SENIOR_MGR</span>
+            </div>
+            <div class="tech-cell">
+                <span class="tech-label">TEAM_SIZE</span>
+                <span class="tech-val">50_MEMBERS</span>
+            </div>
+            <div class="tech-cell">
+                <span class="tech-label">EFFICIENCY</span>
+                <span class="tech-val">HIGH_IMPACT</span>
+            </div>
+            <div class="tech-cell">
+                <span class="tech-label">STATUS</span>
+                <span class="tech-val">AVAILABLE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 9: Hexagons -->
+    <div class="container">
+        <span class="label">Opción 9: Hexágonos (Estructura)</span>
+        <style>
+            .opt-9-flex {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .hex {
+                width: 100px;
+                height: 110px;
+                background: rgba(14, 165, 233, 0.1);
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s;
+            }
+
+            .hex:hover {
+                background: rgba(14, 165, 233, 0.3);
+                transform: scale(1.1);
+            }
+
+            .hex-val {
+                font-weight: 800;
+                font-size: 18px;
+                color: var(--brand2);
+            }
+
+            .hex-label {
+                font-size: 10px;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-top: 5px;
+            }
+        </style>
+        <div class="opt-9-flex">
+            <div class="hex"><span class="hex-val">12+</span><span class="hex-label">Años</span></div>
+            <div class="hex"><span class="hex-val">50+</span><span class="hex-label">Equipos</span></div>
+            <div class="hex"><span class="hex-val">100%</span><span class="hex-label">KPIs</span></div>
+            <div class="hex"><span class="hex-val">Top</span><span class="hex-label">Talento</span></div>
+        </div>
+    </div>
+
+    <!-- Option 10: Dot Matrix -->
+    <div class="container">
+        <span class="label">Opción 10: Matriz de Puntos (Clásico)</span>
+        <style>
+            .opt-10-list {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .dot-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                padding-bottom: 8px;
+            }
+
+            .dot-label {
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            .dots {
+                display: flex;
+                gap: 4px;
+            }
+
+            .dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .dot.fill {
+                background: var(--brand2);
+                box-shadow: 0 0 5px var(--brand2);
+            }
+        </style>
+        <div class="opt-10-list">
+            <div class="dot-item">
+                <span class="dot-label">Planificación Estratégica</span>
+                <div class="dots">
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                </div>
+            </div>
+            <div class="dot-item">
+                <span class="dot-label">Gestión de Crisis</span>
+                <div class="dots">
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+            <div class="dot-item">
+                <span class="dot-label">Negociación</span>
+                <div class="dots">
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                    <div class="dot fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 11: Gauges -->
+    <div class="container">
+        <span class="label">Opción 11: Medidores (Performance)</span>
+        <style>
+            .opt-11-grid {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .gauge {
+                width: 80px;
+                position: relative;
+                text-align: center;
+            }
+
+            .gauge-arc {
+                width: 80px;
+                height: 40px;
+                border-radius: 40px 40px 0 0;
+                background: rgba(255, 255, 255, 0.1);
+                overflow: hidden;
+                position: relative;
+            }
+
+            .gauge-fill {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--brand2);
+                transform-origin: bottom center;
+                transform: rotate(0deg);
+            }
+
+            .gauge-val {
+                font-weight: 800;
+                font-size: 16px;
+                margin-top: 5px;
+                display: block;
+            }
+
+            .gauge-label {
+                font-size: 11px;
+                color: var(--muted);
+            }
+        </style>
+        <div class="opt-11-grid">
+            <div class="gauge">
+                <div class="gauge-arc">
+                    <div class="gauge-fill" style="transform: rotate(160deg)"></div>
+                </div>
+                <span class="gauge-val">95%</span>
+                <span class="gauge-label">Liderazgo</span>
+            </div>
+            <div class="gauge">
+                <div class="gauge-arc">
+                    <div class="gauge-fill" style="transform: rotate(140deg)"></div>
+                </div>
+                <span class="gauge-val">85%</span>
+                <span class="gauge-label">Ventas</span>
+            </div>
+            <div class="gauge">
+                <div class="gauge-arc">
+                    <div class="gauge-fill" style="transform: rotate(170deg)"></div>
+                </div>
+                <span class="gauge-val">98%</span>
+                <span class="gauge-label">Operación</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 12: Minimal List -->
+    <div class="container">
+        <span class="label">Opción 12: Lista Minimalista (Limpio)</span>
+        <style>
+            .opt-12-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .min-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px;
+                border-bottom: 1px solid var(--stroke);
+            }
+
+            .min-num {
+                font-weight: 800;
+                color: var(--brand2);
+                font-size: 18px;
+                width: 40px;
+            }
+
+            .min-text {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .min-head {
+                font-weight: 700;
+                font-size: 14px;
+                color: #fff;
+            }
+
+            .min-sub {
+                font-size: 11px;
+                color: var(--muted);
+            }
+        </style>
+        <div class="opt-12-list">
+            <div class="min-item">
+                <span class="min-num">12</span>
+                <div class="min-text"><span class="min-head">Años Exp.</span><span class="min-sub">Gerencia
+                        General</span></div>
+            </div>
+            <div class="min-item">
+                <span class="min-num">50</span>
+                <div class="min-text"><span class="min-head">Personas</span><span class="min-sub">Equipo Directo</span>
+                </div>
+            </div>
+            <div class="min-item">
+                <span class="min-num">3x</span>
+                <div class="min-text"><span class="min-head">Crecimiento</span><span class="min-sub">Últimos 2
+                        años</span></div>
+            </div>
+            <div class="min-item">
+                <span class="min-num">100</span>
+                <div class="min-text"><span class="min-head">% KPIs</span><span class="min-sub">Cumplimiento</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 13: Floating Bubbles -->
+    <div class="container">
+        <span class="label">Opción 13: Burbujas Flotantes (Orgánico)</span>
+        <style>
+            .opt-13-area {
+                position: relative;
+                height: 200px;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 16px;
+                overflow: hidden;
+            }
+
+            .bubble {
+                position: absolute;
+                border-radius: 50%;
+                background: radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.2), rgba(14, 165, 233, 0.4));
+                border: 1px solid rgba(14, 165, 233, 0.3);
+                display: grid;
+                place-items: center;
+                text-align: center;
+                color: #fff;
+                box-shadow: 0 0 15px rgba(14, 165, 233, 0.1);
+                animation: float 6s ease-in-out infinite;
+            }
+
+            @keyframes float {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+
+            .bubble span {
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 1.1;
+            }
+
+            .bubble strong {
+                display: block;
+                font-size: 16px;
+                color: var(--brand2);
+            }
+        </style>
+        <div class="opt-13-area">
+            <div class="bubble" style="width: 100px; height: 100px; top: 20px; left: 20px; animation-delay: 0s;">
+                <span>Liderazgo<br><strong>12a</strong></span></div>
+            <div class="bubble" style="width: 80px; height: 80px; top: 80px; left: 140px; animation-delay: 1s;">
+                <span>Ventas<br><strong>High</strong></span></div>
+            <div class="bubble" style="width: 120px; height: 120px; top: 30px; right: 30px; animation-delay: 2s;">
+                <span>Estrategia<br><strong>Expert</strong></span></div>
+            <div class="bubble" style="width: 70px; height: 70px; bottom: 20px; left: 80px; animation-delay: 3s;">
+                <span>KPIs<br><strong>100%</strong></span></div>
+        </div>
+    </div>
+
+    <!-- Option 14: Radar Chart (Simulated) -->
+    <div class="container">
+        <span class="label">Opción 14: Radar Chart (Multidimensional)</span>
+        <style>
+            .opt-14-box {
+                display: flex;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .radar-svg {
+                width: 200px;
+                height: 200px;
+                overflow: visible;
+            }
+
+            .radar-bg {
+                fill: rgba(255, 255, 255, 0.02);
+                stroke: rgba(255, 255, 255, 0.1);
+                stroke-width: 1;
+            }
+
+            .radar-shape {
+                fill: rgba(14, 165, 233, 0.3);
+                stroke: var(--brand2);
+                stroke-width: 2;
+            }
+
+            .radar-label {
+                font-size: 10px;
+                fill: var(--muted);
+                text-anchor: middle;
+            }
+        </style>
+        <div class="opt-14-box">
+            <svg class="radar-svg" viewBox="0 0 100 100">
+                <!-- Background Grid -->
+                <polygon class="radar-bg" points="50,10 90,30 90,70 50,90 10,70 10,30" />
+                <polygon class="radar-bg" points="50,25 75,37.5 75,62.5 50,75 25,62.5 25,37.5" />
+                <!-- Data Shape -->
+                <polygon class="radar-shape" points="50,15 85,35 80,65 50,85 20,65 15,35" />
+                <!-- Labels -->
+                <text x="50" y="5" class="radar-label">Estrategia</text>
+                <text x="95" y="25" class="radar-label">Ventas</text>
+                <text x="95" y="75" class="radar-label">Finanzas</text>
+                <text x="50" y="98" class="radar-label">Liderazgo</text>
+                <text x="5" y="75" class="radar-label">Ops</text>
+                <text x="5" y="25" class="radar-label">Mktg</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Option 15: Skill Path -->
+    <div class="container">
+        <span class="label">Opción 15: Ruta de Habilidades (Timeline)</span>
+        <style>
+            .opt-15-path {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                padding: 20px 0;
+            }
+
+            .path-line {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: rgba(255, 255, 255, 0.1);
+                z-index: 0;
+            }
+
+            .path-node {
+                position: relative;
+                z-index: 1;
+                background: #0b1321;
+                border: 2px solid var(--brand2);
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                transition: 0.3s;
+            }
+
+            .path-node:hover {
+                transform: scale(1.3);
+                background: var(--brand2);
+                box-shadow: 0 0 10px var(--brand2);
+            }
+
+            .path-info {
+                position: absolute;
+                top: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
+                font-size: 12px;
+                color: var(--text);
+                font-weight: 600;
+                opacity: 0.8;
+            }
+
+            .path-val {
+                position: absolute;
+                bottom: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 11px;
+                color: var(--brand2);
+                font-weight: 700;
+            }
+        </style>
+        <div class="opt-15-path">
+            <div class="path-line"></div>
+            <div class="path-node"><span class="path-info">Analista</span><span class="path-val">2010</span></div>
+            <div class="path-node"><span class="path-info">Jefatura</span><span class="path-val">2014</span></div>
+            <div class="path-node"><span class="path-info">Gerencia</span><span class="path-val">2018</span></div>
+            <div class="path-node"><span class="path-info">Dirección</span><span class="path-val">2022</span></div>
+            <div class="path-node" style="border-color: #fff"><span class="path-info">Consultor</span><span
+                    class="path-val">Hoy</span></div>
+        </div>
+    </div>
+
+    <!-- Option 16: Flip Cards -->
+    <div class="container">
+        <span class="label">Opción 16: Tarjetas Interactivas (Flip)</span>
+        <style>
+            .opt-16-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+            }
+
+            .flip-card {
+                background-color: transparent;
+                height: 100px;
+                perspective: 1000px;
+            }
+
+            .flip-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                transition: transform 0.6s;
+                transform-style: preserve-3d;
+            }
+
+            .flip-card:hover .flip-inner {
+                transform: rotateY(180deg);
+            }
+
+            .flip-front,
+            .flip-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                border-radius: 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid var(--stroke);
+            }
+
+            .flip-front {
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .flip-back {
+                background: linear-gradient(135deg, var(--brand1), var(--brand2));
+                color: #000;
+                transform: rotateY(180deg);
+            }
+
+            .flip-icon {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+
+            .flip-title {
+                font-weight: 700;
+                font-size: 14px;
+            }
+
+            .flip-stat {
+                font-weight: 800;
+                font-size: 20px;
+            }
+        </style>
+        <div class="opt-16-grid">
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="flip-icon">💼</div>
+                        <div class="flip-title">Gestión</div>
+                    </div>
+                    <div class="flip-back">
+                        <div class="flip-stat">12 Años</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="flip-icon">👥</div>
+                        <div class="flip-title">Equipos</div>
+                    </div>
+                    <div class="flip-back">
+                        <div class="flip-stat">50+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="flip-icon">📈</div>
+                        <div class="flip-title">Ventas</div>
+                    </div>
+                    <div class="flip-back">
+                        <div class="flip-stat">+30%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

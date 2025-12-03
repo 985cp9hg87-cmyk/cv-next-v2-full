@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Icon Alternatives</title>
+    <style>
+        :root {
+            --bg: #0b1321;
+            --panel: #0f172a;
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --brand1: #0ea5e9;
+            --brand2: #22d3ee;
+            --stroke: rgba(14, 165, 233, .35);
+            --radius: 14px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            background: #0b1321;
+            color: var(--text);
+            font-family: system-ui, sans-serif;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h2 {
+            grid-column: 1/-1;
+            text-align: center;
+            color: var(--brand2);
+            margin-bottom: 20px;
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        /* Card Styles from content.html */
+        .card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, .02);
+            border: 1px solid var(--stroke);
+        }
+
+        .card h4 {
+            margin: 0;
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--text);
+        }
+
+        .card p {
+            margin: 2px 0 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Badge Base Style */
+        .badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(180deg, rgba(14, 165, 233, .18), rgba(34, 211, 238, .10));
+            border: 1px solid rgba(14, 165, 233, .60);
+            color: #08222b;
+            /* Default for emoji */
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* SVG Icon Style */
+        .badge svg {
+            width: 20px;
+            height: 20px;
+            color: var(--brand2);
+            /* Brand color for SVGs */
+        }
+
+        /* Option Specific Overrides if needed */
+        .opt-minimal .badge {
+            background: transparent;
+            border: 1px solid var(--muted);
+        }
+
+        .opt-minimal .badge svg {
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Alternativas de Iconos de Educación</h2>
+
+    <!-- Option 1: Emoji (Current) -->
+    <div class="option-group">
+        <span class="option-label">1. Emoji (Actual)</span>
+        <div class="card">
+            <div class="badge">🎓</div>
+            <div>
+                <h4>Magíster en Administración</h4>
+                <p>Universidad Gabriela Mistral</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 2: Mortarboard (SVG) -->
+    <div class="option-group">
+        <span class="option-label">2. Birrete (SVG)</span>
+        <div class="card">
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+            </div>
+            <div>
+                <h4>Magíster en Administración</h4>
+                <p>Universidad Gabriela Mistral</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 3: Book (SVG) -->
+    <div class="option-group">
+        <span class="option-label">3. Libro (SVG)</span>
+        <div class="card">
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+            </div>
+            <div>
+                <h4>Magíster en Administración</h4>
+                <p>Universidad Gabriela Mistral</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 4: Certificate / Scroll (SVG) -->
+    <div class="option-group">
+        <span class="option-label">4. Diploma (SVG)</span>
+        <div class="card">
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                </svg>
+            </div>
+            <div>
+                <h4>Magíster en Administración</h4>
+                <p>Universidad Gabriela Mistral</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 5: University / Column (SVG) -->
+    <div class="option-group">
+        <span class="option-label">5. Universidad (SVG)</span>
+        <div class="card">
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+                <!-- Using layers icon as abstract university/structure, or classic bank/column -->
+            </div>
+            <div>
+                <h4>Magíster en Administración</h4>
+                <p>Universidad Gabriela Mistral</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 6: Star / Award (SVG) -->
+    <div class="option-group">
+        <span class="option-label">6. Medalla / Logro</span>
+        <div class="card">
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7" />
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                </svg>
+            </div>
+            <div>
+                <h4>Magíster en Administración</h4>
+                <p>Universidad Gabriela Mistral</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

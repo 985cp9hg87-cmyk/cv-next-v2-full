@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Alternatives</title>
+    <style>
+        :root {
+            --bg: #0b1321;
+            --panel: #0f172a;
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --brand1: #0ea5e9;
+            --brand2: #22d3ee;
+            --stroke: rgba(14, 165, 233, .35);
+            --radius: 14px;
+        }
+
+        body {
+            background: #0b1321;
+            color: var(--text);
+            font-family: system-ui, sans-serif;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            grid-column: 1/-1;
+            text-align: center;
+            color: var(--brand2);
+        }
+
+        .option-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--stroke);
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .option-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        /* Base Details Style */
+        details {
+            background: rgba(255, 255, 255, .02);
+            border: 1px solid var(--stroke);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+        summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* --- OPTION 1: Minimal Chevron (SVG) --- */
+        .opt-1 .icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            color: var(--muted);
+        }
+
+        .opt-1 details[open] .icon {
+            transform: rotate(90deg);
+            color: var(--brand2);
+        }
+
+        /* --- OPTION 2: Plus / Minus --- */
+        .opt-2 .icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            display: grid;
+            place-items: center;
+        }
+
+        .opt-2 .icon::before,
+        .opt-2 .icon::after {
+            content: "";
+            position: absolute;
+            background: var(--brand2);
+            transition: 0.3s ease;
+        }
+
+        /* Horizontal line */
+        .opt-2 .icon::before {
+            width: 14px;
+            height: 2px;
+        }
+
+        /* Vertical line */
+        .opt-2 .icon::after {
+            width: 2px;
+            height: 14px;
+        }
+
+        .opt-2 details[open] .icon::after {
+            transform: rotate(90deg);
+            /* Turns into minus if horizontal stays, or just rotates */
+            /* Actually to make minus: rotate vertical line 90deg to match horizontal? No. 
+         To make minus from plus: rotate the whole thing or scale vertical to 0. 
+         Let's rotate the whole icon 45deg to make 'x', or just hide vertical.
+         Let's try standard Plus -> Minus.
+      */
+            height: 0;
+            /* Collapse vertical */
+        }
+
+        .opt-2 details[open] .icon::before {
+            background: var(--text);
+            /* Optional color change */
+        }
+
+        /* --- OPTION 3: Circle Button --- */
+        .opt-3 .icon-box {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--stroke);
+            display: grid;
+            place-items: center;
+            transition: 0.3s;
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        .opt-3 .icon {
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid var(--brand2);
+            border-bottom: 2px solid var(--brand2);
+            transform: rotate(-45deg);
+            /* Points right */
+            transition: 0.3s;
+            margin-left: -2px;
+            /* Visual center fix */
+        }
+
+        .opt-3 details[open] .icon-box {
+            background: var(--brand1);
+            border-color: var(--brand1);
+        }
+
+        .opt-3 details[open] .icon {
+            transform: rotate(45deg);
+            /* Points down */
+            border-color: #fff;
+            margin-left: 0;
+            margin-top: -2px;
+        }
+
+        /* --- OPTION 4: Gradient Glow --- */
+        .opt-4 .icon {
+            font-size: 18px;
+            background: linear-gradient(180deg, var(--brand1), var(--brand2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .opt-4 details[open] .icon {
+            transform: rotate(90deg);
+            filter: drop-shadow(0 0 5px var(--brand2));
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Alternativas de Navegación</h2>
+
+    <!-- Option 1 -->
+    <div class="option-card opt-1">
+        <span class="option-title">1. Chevron Minimalista (SVG)</span>
+        <details>
+            <summary>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                Experiencia Laboral
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Diseño limpio y ligero.</p>
+        </details>
+        <details open>
+            <summary>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                Educación (Abierto)
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">La flecha rota suavemente.</p>
+        </details>
+    </div>
+
+    <!-- Option 2 -->
+    <div class="option-card opt-2">
+        <span class="option-title">2. Signo Más / Menos</span>
+        <details>
+            <summary>
+                <div class="icon"></div>
+                Experiencia Laboral
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Clásico y funcional.</p>
+        </details>
+        <details open>
+            <summary>
+                <div class="icon"></div>
+                Educación (Abierto)
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Se transforma en menos.</p>
+        </details>
+    </div>
+
+    <!-- Option 3 -->
+    <div class="option-card opt-3">
+        <span class="option-title">3. Botón Circular</span>
+        <details>
+            <summary>
+                <div class="icon-box">
+                    <div class="icon"></div>
+                </div>
+                Experiencia Laboral
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Estilo táctil y premium.</p>
+        </details>
+        <details open>
+            <summary>
+                <div class="icon-box">
+                    <div class="icon"></div>
+                </div>
+                Educación (Abierto)
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Cambia de color al activar.</p>
+        </details>
+    </div>
+
+    <!-- Option 4 -->
+    <div class="option-card opt-4">
+        <span class="option-title">4. Flecha Gradiente (Glow)</span>
+        <details>
+            <summary>
+                <span class="icon">➤</span>
+                Experiencia Laboral
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Integrado con la marca.</p>
+        </details>
+        <details open>
+            <summary>
+                <span class="icon">➤</span>
+                Educación (Abierto)
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Brilla al abrirse.</p>
+        </details>
+    </div>
+
+    <!-- Option 5: Double Chevron -->
+    <div class="option-card opt-5">
+        <span class="option-title">5. Doble Chevron</span>
+        <style>
+            .opt-5 .icon {
+                font-size: 14px;
+                color: var(--brand2);
+                letter-spacing: -2px;
+                transition: 0.3s;
+                font-weight: 800;
+            }
+
+            .opt-5 details[open] .icon {
+                transform: rotate(90deg);
+                letter-spacing: 0px;
+            }
+        </style>
+        <details>
+            <summary>
+                <span class="icon">»</span>
+                Experiencia Laboral
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Dinámico y rápido.</p>
+        </details>
+        <details open>
+            <summary>
+                <span class="icon">»</span>
+                Educación (Abierto)
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Se expande al girar.</p>
+        </details>
+    </div>
+
+    <!-- Option 6: Animated Plus to X -->
+    <div class="option-card opt-6">
+        <span class="option-title">6. Más a X (Cerrar)</span>
+        <style>
+            .opt-6 .icon {
+                width: 18px;
+                height: 18px;
+                position: relative;
+            }
+
+            .opt-6 .icon::before,
+            .opt-6 .icon::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                background: var(--text);
+                transition: 0.3s;
+            }
+
+            .opt-6 .icon::before {
+                width: 14px;
+                height: 2px;
+                margin: -1px 0 0 -7px;
+            }
+
+            .opt-6 .icon::after {
+                width: 2px;
+                height: 14px;
+                margin: -7px 0 0 -1px;
+            }
+
+            .opt-6 details[open] .icon {
+                transform: rotate(45deg);
+            }
+
+            .opt-6 details[open] .icon::before,
+            .opt-6 details[open] .icon::after {
+                background: var(--brand2);
+            }
+        </style>
+        <details>
+            <summary>
+                <div class="icon"></div>
+                Experiencia Laboral
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Intuitivo para cerrar.</p>
+        </details>
+        <details open>
+            <summary>
+                <div class="icon"></div>
+                Educación (Abierto)
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Gira 45° para formar una X.</p>
+        </details>
+    </div>
+
+    <!-- Option 7: Solid Triangle (Small) -->
+    <div class="option-card opt-7">
+        <span class="option-title">7. Triángulo Sólido (Minimal)</span>
+        <style>
+            .opt-7 .icon {
+                width: 0;
+                height: 0;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 8px solid var(--muted);
+                transform: rotate(-90deg);
+                transition: 0.2s;
+            }
+
+            .opt-7 details[open] .icon {
+                transform: rotate(0deg);
+                border-top-color: var(--brand2);
+            }
+        </style>
+        <details>
+            <summary>
+                <div class="icon"></div>
+                Experiencia Laboral
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Geométrico y preciso.</p>
+        </details>
+        <details open>
+            <summary>
+                <div class="icon"></div>
+                Educación (Abierto)
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Apunta hacia abajo.</p>
+        </details>
+    </div>
+
+    <!-- Option 8: Caret (Line) -->
+    <div class="option-card opt-8">
+        <span class="option-title">8. Caret (Línea)</span>
+        <style>
+            .opt-8 .icon {
+                width: 10px;
+                height: 10px;
+                border-right: 2px solid var(--muted);
+                border-bottom: 2px solid var(--muted);
+                transform: rotate(-45deg);
+                transition: 0.3s;
+            }
+
+            .opt-8 details[open] .icon {
+                transform: rotate(45deg);
+                border-color: var(--brand1);
+            }
+        </style>
+        <details>
+            <summary>
+                <div class="icon"></div>
+                Experiencia Laboral
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Sutil y moderno.</p>
+        </details>
+        <details open>
+            <summary>
+                <div class="icon"></div>
+                Educación (Abierto)
+            </summary>
+            <p style="margin:10px 0 0; color:var(--muted)">Giro clásico.</p>
+        </details>
+    </div>
+
+</body>
+
+</html>
