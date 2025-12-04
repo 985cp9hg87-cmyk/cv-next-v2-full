@@ -443,7 +443,7 @@
       }
     }
 
-    @media (max-width:700px) {
+    @media (max-width: 600px) {
       header.hero {
         display: flex;
         flex-direction: column;
@@ -511,7 +511,7 @@
       /* Fix for large word spacing in mobile */
       .bio-inner p,
       .bio-inner li {
-        text-align: left;
+        text-align: left !important;
       }
     }
 
@@ -1367,8 +1367,17 @@ END:VCALENDAR`;
         const isOpen = detail.hasAttribute('open') && content.classList.contains('expanded');
 
         // Identify group
-        const isBio = detail.classList.contains('bio-item');
-        const groupSelector = isBio ? 'details.bio-item' : 'details.xp-item';
+        let groupSelector;
+        // Mobile: Global exclusive (one open at a time across ALL sections)
+        // Using 600px to match the CSS media query
+        if (window.innerWidth <= 600) {
+          groupSelector = 'details.bio-item, details.xp-item';
+        }
+        // Desktop: Per-section exclusive
+        else {
+          const isBio = detail.classList.contains('bio-item');
+          groupSelector = isBio ? 'details.bio-item' : 'details.xp-item';
+        }
 
         if (isOpen) {
           closeAccordion(detail, content);
