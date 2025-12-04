@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import TrackClient from "../components/TrackClient";
 
 export const metadata: Metadata = {
-  title: "CV de José Luis",
-  description: "CV con métricas, CTAs y Supabase"
+  title: "CV de José Luis Acevedo Ayala",
+  description: "Ingeniero Comercial",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
