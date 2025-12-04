@@ -475,17 +475,21 @@
       }
 
       .title h1 {
-        font-size: 33px;
-        /* Approved size */
+        font-size: clamp(22px, 6vw, 33px);
+        /* Dynamic size to ensure single line */
         line-height: 1.1;
         margin: 0 0 6px;
-        white-space: normal;
-        /* Allow wrapping to prevent overflow and centering issues */
+        white-space: nowrap;
+        /* Force single line as requested */
+        overflow: hidden;
+        /* Safety */
+        text-overflow: ellipsis;
+        /* Graceful degradation */
       }
 
       .title h1 span {
-        display: inline-block;
-        /* Changed from inline to inline-block for better wrapping control */
+        display: inline;
+        /* Revert to inline to keep them together */
       }
 
       .subtitle {
@@ -1416,6 +1420,7 @@ END:VCALENDAR`;
             type: 'cta_click',
             label: label,
           });
+          // Do NOT prevent default here, let the link work (mailto, tel, etc.)
           break;
         }
         el = el.parentElement;
