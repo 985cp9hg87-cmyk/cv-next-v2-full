@@ -729,8 +729,35 @@
     }
 
     /* =========================================
-       MOBILE SKILLS ANIMATION (Sequential)
+       DEMO OPTIONS STYLES
        ========================================= */
+
+    /* --- Option 1: Layout Fix (Mobile Only) --- */
+    @media (max-width: 600px) {
+      .skills-container.opt-layout {
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 30px 10px;
+      }
+
+      .skills-container.opt-layout .bubble {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        animation: none !important;
+        width: 130px !important;
+        height: 130px !important;
+        margin: 0;
+      }
+    }
+
+    /* --- Option 2: Sequential Animation --- */
     @keyframes highlightSequence {
 
       0%,
@@ -760,30 +787,31 @@
       }
     }
 
+    /* Only apply animation on mobile to solve the overlap issue visually */
     @media (max-width: 600px) {
-      .skills-container .bubble {
-        /* Overwrite float animation with sequence on mobile to prevent overlap issues */
+      .skills-container.opt-anim .bubble {
+        /* Overwrite float animation with sequence */
         animation: highlightSequence 15s infinite !important;
         /* 5 bubbles * 3s each */
       }
 
-      .skills-container .bubble:nth-child(1) {
+      .skills-container.opt-anim .bubble:nth-child(1) {
         animation-delay: 0s !important;
       }
 
-      .skills-container .bubble:nth-child(2) {
+      .skills-container.opt-anim .bubble:nth-child(2) {
         animation-delay: 3s !important;
       }
 
-      .skills-container .bubble:nth-child(3) {
+      .skills-container.opt-anim .bubble:nth-child(3) {
         animation-delay: 6s !important;
       }
 
-      .skills-container .bubble:nth-child(4) {
+      .skills-container.opt-anim .bubble:nth-child(4) {
         animation-delay: 9s !important;
       }
 
-      .skills-container .bubble:nth-child(5) {
+      .skills-container.opt-anim .bubble:nth-child(5) {
         animation-delay: 12s !important;
       }
     }
@@ -975,9 +1003,46 @@
         </div>
       </section>
 
+      <!-- OPCIÓN 1: LAYOUT FIX -->
       <section class="panel">
-        <h2 class="section-title">Habilidades</h2>
-        <div class="skills-container">
+        <h2 class="section-title">Habilidades (Opción 1: Diseño Limpio)</h2>
+        <p class="kicker" style="margin-bottom: 15px; font-size: 14px;">En móvil, las burbujas se ordenan
+          automáticamente para no superponerse.</p>
+        <div class="skills-container opt-layout">
+          <!-- 1. Planificación estratégica -->
+          <div class="bubble"
+            style="width: 140px; height: 140px; top: 10px; left: 10px; animation: float 6s ease-in-out infinite; animation-delay: 0s;">
+            <span>Planificación<br>estratégica<br><strong>Avanzado</strong></span>
+          </div>
+          <!-- 2. Gestión de equipos -->
+          <div class="bubble"
+            style="width: 130px; height: 130px; top: 160px; left: 30px; animation: float 6s ease-in-out infinite; animation-delay: 1s;">
+            <span>Gestión de<br>equipos<br><strong>14+ Años</strong></span>
+          </div>
+          <!-- 3. Diseño de procesos -->
+          <div class="bubble"
+            style="width: 145px; height: 145px; top: 20px; right: 20px; animation: float 6s ease-in-out infinite; animation-delay: 2s;">
+            <span>Diseño de<br>procesos<br><strong>Eficiencia</strong></span>
+          </div>
+          <!-- 4. Gestión financiera -->
+          <div class="bubble"
+            style="width: 125px; height: 125px; top: 170px; right: 40px; animation: float 6s ease-in-out infinite; animation-delay: 3s;">
+            <span>Gestión<br>financiera<br><strong>Resultados</strong></span>
+          </div>
+          <!-- 5. Métricas -->
+          <div class="bubble"
+            style="width: 135px; height: 135px; top: 90px; left: 38%; animation: float 6s ease-in-out infinite; animation-delay: 1.5s;">
+            <span>Métricas<br><strong>KPIs</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPCIÓN 2: ANIMACIÓN SECUENCIAL -->
+      <section class="panel">
+        <h2 class="section-title">Habilidades (Opción 2: Foco Dinámico)</h2>
+        <p class="kicker" style="margin-bottom: 15px; font-size: 14px;">Las burbujas se iluminan una por una para
+          facilitar la lectura sin cambiar el diseño original.</p>
+        <div class="skills-container opt-anim">
           <!-- 1. Planificación estratégica -->
           <div class="bubble"
             style="width: 140px; height: 140px; top: 10px; left: 10px; animation: float 6s ease-in-out infinite; animation-delay: 0s;">
