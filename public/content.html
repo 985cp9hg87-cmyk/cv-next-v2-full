@@ -479,11 +479,13 @@
         /* Approved size */
         line-height: 1.1;
         margin: 0 0 6px;
-        white-space: nowrap;
+        white-space: normal;
+        /* Allow wrapping to prevent overflow and centering issues */
       }
 
       .title h1 span {
-        display: inline;
+        display: inline-block;
+        /* Changed from inline to inline-block for better wrapping control */
       }
 
       .subtitle {
@@ -500,6 +502,13 @@
       .wrap {
         padding-left: 16px;
         padding-right: 16px;
+        overflow-x: hidden;
+        /* Prevent horizontal scroll */
+      }
+
+      /* Ensure body doesn't scroll horizontally */
+      body {
+        overflow-x: hidden;
       }
 
       .section-title {
@@ -770,6 +779,12 @@
         /* Overwrite float animation with sequence on mobile to prevent overlap issues */
         animation: highlightSequence 15s infinite !important;
         /* 5 bubbles * 3s each */
+
+        /* Force initial state to match "off" state of animation to prevent all bubbles being lit at start */
+        opacity: 0.15;
+        transform: scale(0.9);
+        z-index: 1;
+        filter: grayscale(0.8);
       }
 
       .skills-container .bubble:nth-child(1) {
@@ -796,7 +811,8 @@
     /* Fix CTA z-index to ensure it's clickable even if bubbles overlap */
     .cta-box {
       position: relative;
-      z-index: 50;
+      z-index: 100;
+      /* Increased to 100 to be safe */
     }
   </style>
 </head>
