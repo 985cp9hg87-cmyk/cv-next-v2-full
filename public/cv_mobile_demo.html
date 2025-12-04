@@ -443,69 +443,137 @@
       }
     }
 
-    @media (max-width:700px) {
+    /* ==== MOBILE REFACTOR (Radical Improvement) ==== */
+
+    /* Tablet / Mobile Large (<= 768px) */
+    @media (max-width: 768px) {
+      .wrap {
+        width: 100%;
+        padding: 24px 16px 80px;
+        /* More side padding */
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        /* Single column force */
+        gap: 40px;
+        /* More vertical breathing room */
+      }
+
+      /* Hero Refactor */
       header.hero {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 20px;
-        padding-top: 30px;
-        margin-bottom: 40px;
+        gap: 24px;
+        margin-bottom: 48px;
+        padding-top: 20px;
       }
 
       .avatar {
         width: 160px;
         height: 160px;
-        border-radius: 14px;
-        /* Match desktop radius */
         margin: 0 auto;
-        border: 1px solid var(--stroke);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-      }
-
-      .avatar img {
-        object-position: center top;
-      }
-
-      .title {
-        width: 100%;
-        margin: 0;
-        transform: none;
+        border-radius: 50%;
+        /* Circular for modern feel, or keep 14px if preferred. User asked for consistent frame, let's keep 14px but ensure it looks good */
+        border-radius: 14px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
       }
 
       .title h1 {
-        font-size: 33px;
-        /* Approved size */
+        /* Fluid typography: min 28px, max 42px */
+        font-size: clamp(1.75rem, 5vw, 2.6rem);
         line-height: 1.1;
-        margin: 0 0 6px;
-        white-space: nowrap;
-      }
-
-      .title h1 span {
-        display: inline;
+        margin-bottom: 8px;
+        white-space: normal;
+        /* Allow wrap if needed on tiny screens, but try to keep 1 line */
       }
 
       .subtitle {
-        font-size: 22px;
-        /* Approved size */
-        margin-top: 6px;
-        display: block;
-        color: #E1C16E;
-        font-weight: 700;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        margin-top: 8px;
         letter-spacing: 1px;
-        text-transform: uppercase;
       }
 
-      .wrap {
-        padding-left: 16px;
-        padding-right: 16px;
+      /* Cards & Sections */
+      .panel {
+        padding: 24px;
+        /* More internal breathing room */
       }
 
       .section-title {
-        font-size: 24px;
-        /* Reduced from 28px for mobile */
-        margin-bottom: 16px;
+        font-size: clamp(1.4rem, 4vw, 1.75rem);
+        margin-bottom: 24px;
+        text-align: left;
+        /* Keep titles left aligned usually looks better in body */
+      }
+
+      /* Experience & Education */
+      details.xp-item {
+        margin: 16px 0;
+        padding: 18px;
+      }
+
+      details.xp-item summary {
+        min-height: 44px;
+        /* Tap target */
+        gap: 16px;
+      }
+
+      .xp h3 {
+        font-size: 1.1rem;
+        line-height: 1.4;
+      }
+
+      .meta {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
+
+      /* Text Readability */
+      p,
+      li {
+        font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+        line-height: 1.7;
+        /* More breathing room for text */
+        color: #e2e8f0;
+        /* Slightly brighter text for contrast */
+      }
+
+      /* Fix alignment globally */
+      .bio-inner p,
+      .bio-inner li,
+      .bullets li {
+        text-align: left !important;
+      }
+
+      /* Skills Grid */
+      .skills-container {
+        height: auto;
+        /* Let it grow */
+        min-height: 320px;
+      }
+    }
+
+    /* Mobile Small (<= 480px) */
+    @media (max-width: 480px) {
+      .grid {
+        gap: 32px;
+      }
+
+      .title h1 {
+        font-size: clamp(1.6rem, 6vw, 2rem);
+      }
+
+      .panel {
+        padding: 20px;
+      }
+
+      /* Ensure buttons are easy to tap */
+      .cta-box .btn {
+        padding: 16px;
+        font-size: 1rem;
       }
     }
 
@@ -1428,8 +1496,17 @@ END:VCALENDAR`;
         const isOpen = detail.hasAttribute('open') && content.classList.contains('expanded');
 
         // Identify group
-        const isBio = detail.classList.contains('bio-item');
-        const groupSelector = isBio ? 'details.bio-item' : 'details.xp-item';
+        let groupSelector;
+        // Mobile: Global exclusive (one open at a time across ALL sections)
+        // Using 600px to match the CSS media query
+        if (window.innerWidth <= 600) {
+          groupSelector = 'details.bio-item, details.xp-item';
+        }
+        // Desktop: Per-section exclusive
+        else {
+          const isBio = detail.classList.contains('bio-item');
+          groupSelector = isBio ? 'details.bio-item' : 'details.xp-item';
+        }
 
         if (isOpen) {
           closeAccordion(detail, content);
