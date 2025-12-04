@@ -475,16 +475,16 @@
       }
 
       .title h1 {
-        font-size: clamp(22px, 6vw, 33px);
-        /* Dynamic size to ensure single line */
+        font-size: clamp(26px, 8vw, 42px);
+        /* Increased size, dynamic */
         line-height: 1.1;
         margin: 0 0 6px;
         white-space: nowrap;
-        /* Force single line as requested */
+        /* Force single line */
         overflow: hidden;
-        /* Safety */
         text-overflow: ellipsis;
-        /* Graceful degradation */
+        letter-spacing: -0.5px;
+        /* Tighten slightly to fit larger text */
       }
 
       .title h1 span {
@@ -525,6 +525,11 @@
       .bio-inner p,
       .bio-inner li {
         text-align: left !important;
+      }
+
+      /* Hide dashes in education on mobile */
+      .mobile-hide-dash {
+        display: none;
       }
     }
 
@@ -974,7 +979,8 @@
             </div>
             <div>
               <h4>Diplomado en Marketing Digital</h4>
-              <p>Pontificia Universidad Católica de Chile — <strong>2022</strong></p>
+              <p>Pontificia Universidad Católica de Chile<span class="mobile-hide-dash"> — </span><strong>2022</strong>
+              </p>
             </div>
           </div>
           <div class="card">
@@ -987,7 +993,7 @@
             </div>
             <div>
               <h4>Magíster en Administración de Empresas</h4>
-              <p>Universidad Gabriela Mistral — <strong>2012</strong></p>
+              <p>Universidad Gabriela Mistral<span class="mobile-hide-dash"> — </span><strong>2012</strong></p>
             </div>
           </div>
           <div class="card">
@@ -1000,7 +1006,7 @@
             </div>
             <div>
               <h4>Ingeniería Comercial</h4>
-              <p>Universidad Gabriela Mistral — <strong>2005</strong></p>
+              <p>Universidad Gabriela Mistral<span class="mobile-hide-dash"> — </span><strong>2005</strong></p>
             </div>
           </div>
         </div>
