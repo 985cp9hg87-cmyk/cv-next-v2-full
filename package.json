@@ -1,20 +1,21 @@
 {
-  "name": "cv-next-v2-full",
+  "name": "finanzas-calculadas",
   "private": true,
   "version": "1.0.0",
+  "description": "Sitio educativo sobre finanzas personales con calculadoras y guías. Diseñado para cumplir con los criterios de aprobación de Google AdSense.",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "npx serve .",
+    "build": "echo 'Sitio estático listo para publicar'",
+    "start": "npx serve ."
   },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.45.4",
-    "next": "14.2.15",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
-  },
-  "devDependencies": {
-    "@types/react": "19.2.2",
-    "typescript": "^5.5.4"
-  }
+  "keywords": [
+    "finanzas",
+    "educación financiera",
+    "calculadoras",
+    "ahorro",
+    "créditos",
+    "adsense-ready"
+  ],
+  "author": "",
+  "license": "MIT"
 }
