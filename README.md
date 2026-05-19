@@ -106,30 +106,29 @@ cv-next-v2-full/
 
 ## 🔧 Preparación para Publicar con AdSense
 
-### Pasos Manuales Pendientes
+### ✅ Código de AdSense instalado
 
-1. **Insertar código de AdSense**
-   - En `<head>` de `index.html`, agregar:
-   ```html
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-   ```
+El script de Google AdSense ya ha sido insertado en el `<head>` de `index.html`:
 
-2. **Verificar dominio en AdSense**
-   - Agregar meta tag de verificación en `<head>` si se solicita
+```html
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9105394888581548"
+     crossorigin="anonymous"></script>
+```
 
-3. **Configurar ads.txt** (opcional pero recomendado)
-   - Crear archivo `ads.txt` en raíz con:
-   ```
-   google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-   ```
+Además, se ha creado el archivo `ads.txt` en la raíz del proyecto:
+```
+google.com, pub-9105394888581548, DIRECT, f08c47fec0942fa0
+```
 
-4. **Solicitar revisión en AdSense**
-   - Conectar el sitio publicado a tu cuenta de AdSense
-   - Esperar revisión (puede tomar varios días)
+### Pasos pendientes (manuales)
 
-5. **Configurar consentimiento de cookies (CMP)**
-   - Si se habilitan anuncios personalizados, configurar CMP desde el panel de AdSense
-   - La política de privacidad ya incluye el texto base para esta configuración
+1. **Desplegar el sitio** en tu hosting (Vercel, Netlify, GitHub Pages, etc.)
+2. **Verificar el dominio** en tu panel de AdSense (si Google lo solicita)
+3. **Solicitar revisión** desde el panel de AdSense: Sitios → Tu dominio → "Solicitar revisión"
+4. **Esperar aprobación** (1-3 días hábiles)
+5. **Activar anuncios automáticos** una vez aprobado (no requiere editar código adicional)
+
+> **Nota:** La página `/politica-de-privacidad` ya incluye la sección requerida sobre cookies de terceros y publicidad personalizada de Google.
 
 ### Archivos Adicionales Recomendados
 
